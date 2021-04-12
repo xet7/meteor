@@ -28,6 +28,7 @@ const reifyBabelParse = require("reify/lib/parsers/babel").parse;
 const reifyCompile = require("reify/lib/compiler").compile;
 const _compile = Mp._compile;
 Mp._compile = function (content, filename) {
+  console.log(`content`, filename);
   try {
     const result = reifyCompile(content, {
       parse: reifyBabelParse,
@@ -38,6 +39,7 @@ Mp._compile = function (content, filename) {
       content = result.code;
     }
   } finally {
+
     return _compile.call(this, content, filename);
   }
 };

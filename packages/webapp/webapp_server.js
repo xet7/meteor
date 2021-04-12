@@ -611,7 +611,7 @@ onMessage("webapp-reload-client", async ({ arch }) => {
 });
 
 async function runWebAppServer() {
-  console.log(`runWebAppServer`);
+  console.log(`inside runWebAppServer`);
 
   var shuttingDown = false;
   var syncQueue = new Meteor._SynchronousQueue();
@@ -1186,6 +1186,8 @@ async function runWebAppServer() {
 
     return "DAEMON";
   };
+
+  console.log(`inside end runWebAppServer`);
 }
 
 var inlineScriptsAllowed = true;
@@ -1232,5 +1234,11 @@ WebAppInternals.addStaticJs = function (contents) {
 WebAppInternals.getBoilerplate = getBoilerplate;
 WebAppInternals.additionalStaticJs = additionalStaticJs;
 
+console.log('runWebAppServer');
 // Start the server!
-runWebAppServer().catch(e => console.error('Error on runWebAppServer', e));
+(async function() {
+  await runWebAppServer().catch(e => console.error('Error on runWebAppServer', e));
+  // → 🎉
+}());
+
+console.log('after runWebAppServer');
