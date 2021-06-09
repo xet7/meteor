@@ -14,6 +14,7 @@ import { execFileSync } from '../utils/processes';
 
 import { cordova as cordova_lib, events as cordova_events, CordovaError }
   from 'cordova-lib';
+import create from "cordova-create";
 import cordova_util from 'cordova-lib/src/cordova/util.js';
 import PluginInfoProvider from 'cordova-common/src/PluginInfo/PluginInfoProvider.js';
 
@@ -71,7 +72,6 @@ const pinnedPluginVersions = {
   "cordova-plugin-test-framework": "1.1.5",
   "cordova-plugin-vibration": "2.1.5",
   "cordova-plugin-whitelist": "1.3.2",
-  "cordova-plugin-wkwebview-engine": "1.1.3"
 }
 
 /**
@@ -207,7 +207,7 @@ outdated platforms`);
       this.runCommands('creating Cordova project', async () => {
         // No need to pass in appName and appId because these are set from
         // the generated config.xml
-        await cordova_lib.create(files.convertToOSPath(this.projectRoot),
+        await create(files.convertToOSPath(this.projectRoot),
           undefined, undefined, config);
       }, undefined, null);
     }
@@ -266,9 +266,9 @@ outdated platforms`);
     builder.writeConfigXmlAndCopyResources();
     builder.copyWWW(bundlePath);
 
-    this.ensurePlatformsAreSynchronized();
     this.ensurePluginsAreSynchronized(pluginVersions,
-      builder.pluginsConfiguration);
+        builder.pluginsConfiguration);
+    this.ensurePlatformsAreSynchronized();
 
     // Temporary workaround for Cordova iOS bug until
     // https://issues.apache.org/jira/browse/CB-10885 is fixed

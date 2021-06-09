@@ -1,3 +1,240 @@
+## v2.3, UNRELEASED
+
+#### Highlights
+
+* Node.js update to 14.17.0 from 12.22.1 🎉
+
+* Typescript update to [4.3.2](https://devblogs.microsoft.com/typescript/announcing-typescript-4-3/)
+
+* Packages had their backward compatibility to before Meteor 1.0 removed. See bellow for more details. 
+
+### Summary of breaking changes
+
+- As Node.js version was upgraded to a new major version we recommend that you review if your npm dependencies are compatible with Node.js 14.
+  - If we receive reports from breaking changes we are going to list them here but so far we are not aware of any.
+  - We recommend that you read Node.js [release notes](https://nodejs.org/en/blog/release/v14.0.0/) though.
+  
+- Accounts have undergone some major changes. See bellow for more details.
+
+- All official packages that have been deprecated have now the deprecated flag and will inform you about that if you install or update them.
+
+### Migration steps
+
+- As Node.js version was upgraded we recommend that you remove your `node_modules` folder (`rm -rf node_modules`) and run `meteor reset` to be sure you compile all the binary dependencies again using the new Node.js version.
+  - Maybe you also want to recreate your lock file.
+
+#### Meteor Version Release
+
+* `meteor-tool@2.3`
+  - Node.js update to 14.17.0 from 12.22.1 🎉
+    - This is a major upgrade in Node.js. See the [release notes](https://nodejs.org/en/blog/release/v14.0.0/) for more details.
+  - `npm` update to 6.14.13.
+  - `fibers` has been updated to v5.0.0.
+  - `promise` has been updated to v8.1.0.
+  - `underscore` has been updated to v1.11.0.
+  - `node-gyp` has been updated to v8.0.0.
+  - `node-pre-gyp` has been updated to v0.15.0.
+  - `@babel/runtime` has been updated to v7.14.0.
+  - `request` has been updated to v2.88.2.
+  - `uuid` has been updated to v3.4.0.
+  - `graceful-fs` has been updated to v4.2.6.
+  - `tar` has been updated to v2.2.2.
+  - `sqlite3` has been updated to v5.0.2.
+  - `http-proxy` has been updated to v1.18.1.
+  - `wordwrap` has been updated to v1.0.0.
+  - `moment` has been updated to v2.29.1.
+  - `glob` has been updated to v7.1.6.
+  - `split2` has been updated to v3.2.2.
+  - `optimism` has been updated to v0.12.2.
+  - `@wry/context` has been updated to v0.5.2.
+  - `lru-cache` has been updated to v4.1.5.
+  - `anser` has been updated to v2.0.1.
+  - `xmlbuilder2` has been updated to v1.8.1.
+  - `ws` has been updated to v7.4.5.
+  - `underscore` has been updated to v1.13.1
+  - Reduced time spent by server (re)start in development by adding a cache for Reify. This optimization can be enabled in production by setting the `METEOR_REIFY_CACHE_DIR` environment variable [PR](https://github.com/meteor/meteor/pull/11400).
+  - New flag `--platforms` has been added to the `build` command to specify the platform you want to build for. `meteor build . --platforms=android`. This is useful for example when you are not using a MacOS and you want to build your app only for Android. Also to save time on CI not building all the platforms all the time. See [PR](https://github.com/meteor/meteor/pull/11437) for details.
+  - The undocumented environment variable `DDP_DEFAULT_CONNECTION_URL` behavior has changed. Setting `DDP_DEFAULT_CONNECTION_URL` when running the server (development: `meteor run` or production: `node main.js`) sets the default DDP server value for meteor.  But this did not work for `cordova` apps.  Now you can define the `cordova` app default DDP server value by setting `DDP_DEFAULT_CONNECTION_URL` when building (`meteor build`).
+  - New env variable `METEOR_TOOL_ENABLE_REIFY_RUNTIME_CACHE` to improve runtime performance on restarts.
+  - New flag `--platforms` has been added to the `build` command to specify the platform you want to build for. `meteor build . --platforms=android`.
+  - Skeletons dependencies updated to latest version
+  
+* `launch-screen@1.3.0`
+  - Removes LaunchScreen from web clients.
+
+* `meteor-babel@7.11.0 (@meteorjs/babel)`
+  - Fixes for Samsung Internet v6.2+ to be considered modern browser and addition of [logical assingment operators](https://github.com/tc39/proposal-logical-assignment) via `babel-presets-meteor`.
+  - This package was renamed to `@meteorjs/babel`.
+
+* `hot-module-replacement@0.3.0` 
+  - Fixes various HMR bugs and edge cases see [PR for more](https://github.com/meteor/meteor/pull/11405).
+
+* `email@2.1.0`
+  - Updates `nodemailer` to `6.6.0` and it now adds `charset=utf-8` to `text/plain` messages by default.
+
+* `server-render@0.4.0`
+  - Updated npm dependencies
+
+### Breaking changes
+* Removed deprecated `mobile-port` flag
+
+* Removed deprecated `raw` name from `isobuild`
+
+* Removed deprecated package API method names `Package.on_use`, `Package.on_test`, `Package._transitional_registerBuildPlugin` and `api.add_files`, if you haven't till now, please use the current camel case versions
+
+* `accounts-base@2.0.0`
+  - Deprecated backward compatibility function `logoutOtherClients` has been removed
+  
+* `accounts-password@2.0.0`
+  - Deprecated backward compatibility functionality for `SRP` passwords from pre-Meteor 1.0 days
+  - Enroll account workflow has been separated from reset password workflow (the enrollment token records are now stored in a separate db field `services.password.enroll`). 
+  
+* `ddp-client@2.5.0`
+  - Removed backward compatibility method names for Meteor before 1.0
+
+* `ddp-server@2.4.0`
+  - Removed backward compatibility method names for Meteor before 1.0
+  - Added support for this.unblock() in Meteor.publish() context
+
+* `meteor-base@2.0.0`
+  - Removed `livedata` dependency which was there for packages build for 0.9.0
+  
+* `minimongo@1.7.0`
+  - Removed the `rewind` method that was noop for compatibility with Meteor 0.8.1
+  
+* `mongo@1.12.0`
+  - Removed the `rewind` method that was noop for compatibility with Meteor 0.8.1
+  
+* `oauth@2.0.0`
+  - Removed `OAuth.initiateLogin` and other functionality like the addition of `?close` in return URI for deprecated OAuth flow pre Meteor 1.0
+
+* `markdown@2.0.0`
+  - Use lazy imports to prevent it from being added to the initial bundle
+  - Added deprecation flag
+  
+* `http@2.0.0`
+  - Internally http has been replaced by [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), should still work as previous version, but edge cases might be different. This is to aid you in transition to fetch.
+
+* `socket-stream-client@0.4.0`
+  - Remove IE8 checks
+
+#### Independent Releases
+
+* `ddp-server@2.3.3`
+  - Updates dependencies which removes Node's HTTP deprecation warning.
+  
+* `socket-stream-client@0.3.2`
+  - Updates dependencies which removes Node's HTTP deprecation warning.
+
+* `ddp-client@2.4.1`
+  - Re-ordering fields in DDP message for better client readability.
+
+* `mongo@1.11.1`
+  - Fixes a `Timestamp.ONE is undefined` bug.
+
+* `mongo-id@1.0.8` 
+  - Removes unused dependency `id-map`.
+
+* `accounts-server@1.7.1` 
+  - To better test password format & limit password to 256 characters, you can change this limit by setting `Meteor.settings.packages.accounts.passwordMaxLength`.
+
+* `static-html@1.3.1`
+  - Removes `underscore` dependency.
+
+* `dev-error-overlay@0.1.1`
+  - Fixes sometimes page content being on top of error overlay.
+
+* `id-map@1.1.1`
+  - Removes unused dependencies and modernizing the code.
+
+* `http@1.4.4`
+  - Used the new deprecation package flag instead of loud console warning.
+  
+* `logic-solver@2.0.8`
+  - Fixed `package.js` to use current `api` method calls.
+  
+* `socket-stream-client@0.3.3`
+  - Update `faye-websocket` dependency to v0.11.4. 
+
+## v2.2, 2021-04-15
+
+#### Highlights
+
+- MongoDB Update to 4.4.4
+- Cordova Update to 10
+- Typescript Update to 4.2.2
+- New skeleton: `meteor create myapp --svelte`
+
+### Breaking changes
+
+* N/A
+
+### Migration steps
+
+* `meteor-tool` maybe you need to install the new Visual C++ Redistributable for Visual Studio 2019 to run MongoDB 4.4.4 on Windows. [read more](https://docs.meteor.com/windows.html)
+
+* `mongo` package is now using useUnifiedTopology as `true` by default otherwise the new driver was producing a warning (see details below). It's important to test your app with this change.
+
+* `cordova` plugins and main libraries were updated from 9 to 10. It's important to test your app with these changes.
+
+* `typescript` was updated to 4.2.2, make sure your read the [breaking changes](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/#breaking-changes).
+
+#### Meteor Version Release
+
+* `meteor-tool@2.2`
+  - Update embedded MongoDB version to 4.4.4 [#11341](https://github.com/meteor/meteor/pull/11341)
+    - Maybe you need to install the new Visual C++ Redistributable for Visual Studio 2019 to run on Windows. [read more](https://docs.meteor.com/windows.html)
+  - Fix WindowsLikeFilesystem true when release string includes case insensitive word microsoft. [#11321](https://github.com/meteor/meteor/pull/11321)
+  - Fix absoluteFilePath on Windows. [#11346](https://github.com/meteor/meteor/pull/11346)
+  - New skeleton: `meteor create myapp --svelte`
+  - Update Blaze skeleton to use HMR
+
+* `npm-mongo@3.9.0`
+  - Update MongoDB driver version to 3.6.6
+
+* `mongo@1.11.0`
+  - Using useUnifiedTopology as `true` by default to avoid the warning: `(node:59240) [MONGODB DRIVER] Warning: Current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor. You can still use it as false with `Mongo._connectionOptions` or `Meteor.settings?.packages?.mongo?.options`.
+
+* `cordova@10`
+  - Update Cordova to 10.0.0 [#11208](https://github.com/meteor/meteor/pull/11208)
+
+* `typescript@4.2.2`
+  - Update Typescript to 4.2.2, make sure your read the [breaking changes](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/#breaking-changes) [#11329](https://github.com/meteor/meteor/pull/11329)
+
+* `accounts-base@1.9.0`
+  - Allow to set token expiration to be set in milliseconds. [#11366](https://github.com/meteor/meteor/pull/11366)
+
+* `facebook-oauth@1.9.0`
+  - Upgrade default Facebook API to v10 & allow overriding this value. [#11362](https://github.com/meteor/meteor/pull/11362)
+
+* `minimongo@1.6.2`
+  - Add [$mul](https://docs.mongodb.com/manual/reference/operator/update/mul/#up._S_mul) to minimongo. [#11364](https://github.com/meteor/meteor/pull/11364)
+
+* `webapp@1.10.1`
+  - Fix for UNIX sockets with node cluster. [#11369](https://github.com/meteor/meteor/pull/11369)
+
+## v2.1.1, 2021-04-06
+
+### Changes
+
+#### Highlights
+
+- Node.js security [update](https://nodejs.org/en/blog/vulnerability/april-2021-security-releases/) to 12.22.1
+
+#### Meteor Version Release
+
+* `meteor-tool@2.1.1`
+  - Node.js security [update](https://nodejs.org/en/blog/vulnerability/april-2021-security-releases/) to 12.22.1
+  - npm update to 6.14.12
+  
+### Breaking changes
+
+* N/A
+
+### Migration steps
+
+* N/A
+
 ## v2.1, 2021-02-24
 
 ### Changes
@@ -11,7 +248,7 @@
 * `meteor-tool@2.1`
   - Node.js security [update](https://nodejs.org/en/blog/vulnerability/february-2021-security-releases/) to 12.21.0
   - `meteor create my-app --plan professional` new flag `plan` to enable you to choose a plan from the deploy command.
-  
+
 ### Breaking changes
 
 * N/A
@@ -27,10 +264,10 @@
 #### Highlights
 
 - Free deploy on [Cloud](https://www.meteor.com/cloud): Deploy for free to Cloud with one command: `meteor deploy myapp.meteorapp.com --free`. ([docs](https://docs.meteor.com/commandline.html#meteordeploy))
-  
+
 
 - Deploy including MongoDB on [Cloud](https://www.meteor.com/cloud): Deploy including MongoDB in a shared instance for free to Cloud with one command: `meteor deploy myapp.meteorapp.com --free --mongo`. ([docs](https://docs.meteor.com/commandline.html#meteordeploy))
-  
+
 
 - Hot Module Replacement (HMR): Updates the javascript modules in a running app that were modified during a rebuild. Reduces the feedback cycle while developing so you can view and test changes quicker (it even updates the app before the build has finished). Enabled by adding the `hot-module-replacement` package to an app. React components are automatically updated by default using React Fast Refresh. Integrations with other libraries and view layers can be provided by third party packages. Support for Blaze is coming soon. This first version supports app code in the modern web architecture. ([docs](https://guide.meteor.com/build-tool.html#hot-module-replacement)) [#11117](https://github.com/meteor/meteor/pull/11117)
 
@@ -49,12 +286,12 @@
 
 * `hot-module-replacement@1.0.0`
   - New package that enables Hot Module Replacement for the Meteor app and provides an API to configure how updates are applied. HMR reduces the feedback cycle while developing by updating modified javascript modules within the running application. ([docs](https://docs.meteor.com/packages/hot-module-replacement.html)) [#11117](https://github.com/meteor/meteor/pull/11117)
-  - These packages have been updated to support HMR: `autoupdate@1.7.0`, `babel-compiler@7.6.0`, `ddp-client@2.4.0`, `dynamic-import@0.6.0`, `ecmascript@0.15.0`, `modules@0.16.0`, `modules-runtime-hot@0.13.0`, `standard-minifier-css@1.7.2`, `webapp@1.10.0`, `webapp-hashing@1.1.0` 
-  
+  - These packages have been updated to support HMR: `autoupdate@1.7.0`, `babel-compiler@7.6.0`, `ddp-client@2.4.0`, `dynamic-import@0.6.0`, `ecmascript@0.15.0`, `modules@0.16.0`, `modules-runtime-hot@0.13.0`, `standard-minifier-css@1.7.2`, `webapp@1.10.0`, `webapp-hashing@1.1.0`
+
 
 * `react-fast-refresh@0.1.0`
   - New package that updates React components using HMR. This is enabled by default in apps that have HMR enabled and use a supported React version. ([docs](https://atmospherejs.com/meteor/react-fast-refresh)) [#11117](https://github.com/meteor/meteor/pull/11117)
-  
+
 
 * `dev-error-overlay@0.1.0`
   - New package that allows you to see build errors and server crashes in your browser during development. Requires the app to have HMR enabled. [#11117](https://github.com/meteor/meteor/pull/11117)
@@ -62,7 +299,7 @@
 
 * `accounts-base@1.8.0` and `accounts-password@1.7.0`
   - Extra parameters can now be added to reset password, verify e-mail and enroll account links that are generated for account e-mails. By default, these are added as search parameters to the generated url. You can pass them as an object in the appropriate functions. E.g. `Accounts.sendEnrollmentEmail(userId, email, null, extraParams);`. [#11288](https://github.com/meteor/meteor/pull/11288)
-    
+
 
 * `logging@1.2.0`
   - Updates dependencies and make debug available for use in non production environments. [#11068](https://github.com/meteor/meteor/pull/11068)
@@ -71,7 +308,7 @@
 * `react-meteor-data@2.2.0`
   - Fix issue with useTracker and Subscriptions when using deps. [#306](https://github.com/meteor/react-packages/pull/306)
   - Remove version constraint on core TypeScript package [#308](https://github.com/meteor/react-packages/pull/308)
-  
+
 
 * `http`
     - It has been deprecated. [#11068](https://github.com/meteor/meteor/pull/11068)
@@ -107,10 +344,10 @@ N/A
 
 * `dynamic-import@0.5.5`
   - Fixes problem on IE because of modern syntax (arrow function).
-  
+
 * `meteor-babel@7.10.6`
   - Allows to disable sourceMap generation [#36](https://github.com/meteor/babel/pull/36)
-  
+
 * `babel-compiler@7.5.5`
   - Allows to disable sourceMap generation [#36](https://github.com/meteor/babel/pull/36)
 
@@ -146,7 +383,7 @@ N/A
   - adds new options for `meteor list` command (TODO pending link to updated doc). [#11165](https://github.com/meteor/meteor/pull/11165)
   - supports Cordova add plugin command working again with plugin id or plugin name in the git URL as it was before Meteor 1.11. [#11202](https://github.com/meteor/meteor/pull/11202)
   - avoids MiTM by downloading through https. [#11188](https://github.com/meteor/meteor/pull/11188)
-  
+
 * `meteor-babel@7.10.5`
   - updates TypeScript to 4.1.2 and enables decorators and metadata reflection. [#11225](https://github.com/meteor/meteor/pull/11225) and [#11255](https://github.com/meteor/meteor/pull/11255)
 
@@ -301,7 +538,7 @@ N/A
   4.2.1 to 4.2.5.
   [PR #11020](https://github.com/meteor/meteor/pull/11020)
 
-* The `url` package now provides an isomorphic implentation of the [WHATWG `url()`
+* The `url` package now provides an isomorphic implementation of the [WHATWG `url()`
   API](https://url.spec.whatwg.org/).
   While remaining backwards compatible, you can now also import `URL` and `URLSearchParams` from `meteor/url`.
   These will work for both modern and legacy browsers as well as node.
@@ -486,8 +723,6 @@ N/A
   [PR #10345](https://github.com/meteor/meteor/pull/10345)
 
 * Facebook OAuth has been updated to call v5 API endpoints. [PR #10738](https://github.com/meteor/meteor/pull/10738)
-
-### Changes
 
 * `Meteor.user()`, `Meteor.findUserByEmail()` and `Meteor.findUserByUserName()` can take a new
   `options` parameter which can be used to limit the returned fields. Useful for minimizing
@@ -3162,7 +3397,7 @@ N/A
   fibers unless the `METEOR_DISABLE_FS_FIBERS` environment variable is
   explicitly set to a falsy value. For larger apps, this change results in
   significant build performance improvements due to the creation of fewer
-  fibers and the avoidance of unnecessary asyncronous delays.
+  fibers and the avoidance of unnecessary asynchronous delays.
   https://github.com/meteor/meteor/pull/7975/commits/ca4baed90ae0675e55c93976411d4ed91f12dd63
 
 * Running Meteor as `root` is still discouraged, and results in a fatal
@@ -3569,7 +3804,7 @@ N/A
 * `App.appendToConfig` allows adding custom tags to config.xml.
   [#7307](https://github.com/meteor/meteor/pull/7307)
 
-* When using `ROOT_URL` with a path, relative CSS URLs are rewriten
+* When using `ROOT_URL` with a path, relative CSS URLs are rewritten
   accordingly. [#5837](https://github.com/meteor/meteor/issues/5837)
 
 * Fixed bugs:
@@ -3688,7 +3923,7 @@ N/A
 
 * Adds `defineMutationMethods` option (default: true) to `new Mongo.Collection` to override default behavior that sets up mutation methods (/collection/[insert|update...]) [PR #5778](https://github.com/meteor/meteor/pull/5778)
 
-* Allow overridding the default warehouse url by specifying `METEOR_WAREHOUSE_URLBASE` [PR #7054](https://github.com/meteor/meteor/pull/7054)
+* Allow overriding the default warehouse url by specifying `METEOR_WAREHOUSE_URLBASE` [PR #7054](https://github.com/meteor/meteor/pull/7054)
 
 * Allow `_id` in `$setOnInsert` in Minimongo: https://github.com/meteor/meteor/pull/7066
 
@@ -3705,7 +3940,7 @@ N/A
 * PhantomJS is no longer included in the Meteor dev bundle (#6905). If you
   previously relied on PhantomJS for local testing, the `spiderable`
   package, Velocity tests, or testing Meteor from a checkout, you should
-  now install PhantomJS yourself, by running the following commmand:
+  now install PhantomJS yourself, by running the following command:
   `meteor npm install -g phantomjs-prebuilt`
 
 * The `babel-compiler` package now looks for `.babelrc` files and
@@ -4207,7 +4442,7 @@ a shorter list of breaking changes you should be aware of when upgrading.
 * `meteor-platform` has been deprecated in favor of the smaller `meteor-base`,
   with apps listing their other dependencies explicitly.  The v1.2 upgrader
   will rewrite `meteor-platform` in existing apps.  `meteor-base` puts fewer
-  symbols in the global namepsace, so it's no longer true that all apps
+  symbols in the global namespace, so it's no longer true that all apps
   have symbols like `Random` and `EJSON` in the global namespace.
 
 * New packages: `ecmascript`, `es5-shim`, `ecmascript-collections`, `promise`,
@@ -5453,7 +5688,7 @@ will not be able to use versions of packages that use the new features.
 
 ### Other Changes
 
-* Offically support `Meteor.wrapAsync` (renamed from
+* Officially support `Meteor.wrapAsync` (renamed from
   `Meteor._wrapAsync`). Additionally, `Meteor.wrapAsync` now lets you
   pass an object to bind as `this` in the wrapped call. See
   https://docs.meteor.com/#meteor_wrapasync.
@@ -7735,7 +7970,7 @@ tmeasday, and workmad3.
 * On the client, `Meteor.apply` takes a new `wait` option, which ensures that no
   further method calls are sent to the server until this method is finished; it
   is used for login and logout methods in order to keep the user ID
-  well-defined. You can also specifiy an `onReconnect` handler which is run when
+  well-defined. You can also specify an `onReconnect` handler which is run when
   re-establishing a connection; Meteor Accounts uses this to log back in on
   reconnect.
 

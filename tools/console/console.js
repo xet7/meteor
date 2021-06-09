@@ -78,10 +78,6 @@ const CARRIAGE_RETURN = process.platform === 'win32' &&
 const FORCE_PRETTY = process.env.METEOR_PRETTY_OUTPUT &&
   process.env.METEOR_PRETTY_OUTPUT != '0';
 
-if (! process.env.METEOR_COLOR) {
-  chalk.enabled = false;
-}
-
 const STATUS_MAX_LENGTH = 40;
 
 const PROGRESS_MAX_WIDTH = 40;
@@ -782,7 +778,7 @@ class Console extends ConsoleBase {
     }
 
     var message = this._format(args);
-    process.stdout.write( '\n*** simpleDebug ***\n' + message + '\n*** end simpleDebug ***\n');
+    process.stdout.write( '\n' + message + '\n');
   }
 
   // By default, Console.debug automatically line wraps the output.
@@ -1086,7 +1082,7 @@ class Console extends ConsoleBase {
   //        level with Console.LEVEL_INFO, Console.LEVEL_ERROR, etc.
   //      - ignoreWidth: ignore the width of the terminal, and go over the
   //        character limit instead of trailing off with '...'. Useful for
-  //        printing directories, for examle.
+  //        printing directories, for example.
   //      - indent: indent the entire table by a given number of spaces.
   printTwoColumns(rows, options) {
     options = options || Object.create(null);
