@@ -12,9 +12,9 @@ NPM_VERSION=6.14.15
 
 
 if [ "$UNAME" == "Linux" ] ; then
-    if [ "$ARCH" != "i686" -a "$ARCH" != "x86_64" ] ; then
+    if [ "$ARCH" != "i686" -a "$ARCH" != "x86_64" -a "$ARCH" != "armv6l" -a "$ARCH" != "armv7l" -a "$ARCH" != "aarch64" -a "$ARCH" != "s390x" -a "$ARCH" != "ppc" -a "$ARCH" != "ppc64le"] ; then
         echo "Unsupported architecture: $ARCH"
-        echo "Meteor only supports i686 and x86_64 for now."
+        echo "Meteor only supports i686, x86_64, armv6l, armv7l, arm64, s390x, ppc and ppc64le for now."
         exit 1
     fi
 
@@ -63,6 +63,24 @@ then
     elif [ "$ARCH" == "x86_64" ]
     then
         NODE_TGZ="node-v${NODE_VERSION}-linux-x64.tar.gz"
+    elif [ "$ARCH" == "armv6l" ]
+    then
+        NODE_TGZ="node-v${NODE_VERSION}-linux-armv6l.tar.gz"
+    elif [ "$ARCH" == "armv7l" ]
+    then
+        NODE_TGZ="node-v${NODE_VERSION}-linux-armv7l.tar.gz"
+    elif [ "$ARCH" == "aarch64" ]
+    then
+        NODE_TGZ="node-v${NODE_VERSION}-linux-arm64.tar.gz"
+    elif [ "$ARCH" == "s390x" ]
+    then
+        NODE_TGZ="node-v${NODE_VERSION}-linux-s390x.tar.gz"
+    elif [ "$ARCH" == "ppc" ]
+    then
+        NODE_TGZ="node-v${NODE_VERSION}-linux-ppc.tar.gz"
+    elif [ "$ARCH" == "ppc64le" ]
+    then
+        NODE_TGZ="node-v${NODE_VERSION}-linux-ppc64le.tar.gz"
     else
         echo "Unknown architecture: $UNAME $ARCH"
         exit 1

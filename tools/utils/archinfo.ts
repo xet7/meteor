@@ -130,8 +130,17 @@ const utils = require('./utils');
 export const VALID_ARCHITECTURES: Record<string, boolean> = {
   "os.osx.x86_64": true,
   "os.osx.arm64": true,
+  "os.linux.i686": true,
   "os.linux.x86_64": true,
+  "os.linux.armv6l": true,
+  "os.linux.armv7l": true,
+  "os.linux.arm64": true,
+  "os.linux.s390x": true,
+  "os.linux.ppc": true,
+  "os.linux.ppc64le": true,
+  "os.windows.x86": true,
   "os.windows.x86_64": true,
+  "os.aix.ppc64": true,
 };
 
 // Returns the fully qualified arch of this host -- something like
@@ -169,11 +178,34 @@ export function host() {
       const machine = run('uname', '-m');
       if (["x86_64", "amd64", "ia64"].includes(machine)) {
         _host = "os.linux.x86_64";
+      } else if(["x86", "i386", "i686"].includes(machine)) {
+        _host = "os.linux.x86";
+      } else if (["armv6l"].includes(machine)) {
+        _host = "os.linux.x86_64";
+      } else if (["armv7l"].includes(machine)) {
+        _host = "os.linux.armv7l";
+      } else if (["aarch64", "arm64"].includes(machine)) {
+        _host = "os.linux.arm64";
+      } else if (["s390x"].includes(machine)) {
+        _host = "os.linux.s390x";
+      } else if (["ppc"].includes(machine)) {
+        _host = "os.linux.ppc";
+      } else if (["ppc64le", "ppc64el"].includes(machine)) {
+        _host = "os.linux.ppc64le";
+      } else {
+        throw new Error(`Unsupported architecture: ${machine}`);
+      }
+    } else if (platform === "aix") {
+      const machine = run('uname', '-m');
+      if (["ppc64le", "ppc64el"].includes(machine)) {
+        _host = "os.aix.ppc64le";
       } else {
         throw new Error(`Unsupported architecture: ${machine}`);
       }
     } else if (platform === "win32" && process.arch === "x64") {
       _host = "os.windows.x86_64";
+    } else if (platform === "win32" && process.arch === "x86") {
+      _host = "os.windows.x86";
     } else {
       throw new Error(`Unsupported operating system: ${platform}`);
     }

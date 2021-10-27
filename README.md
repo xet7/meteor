@@ -81,3 +81,27 @@ sudo rm /usr/local/bin/meteor
 
 On Windows, [read here](npm-packages/meteor-installer/README.md).
 
+## Building bundle manually
+
+For example on:
+- Windows: x86, x86_64
+- Linux: i686, x86_64, armv6l, armv7l, arm64, s390x, ppc, ppc64le
+- macOS: arm64, x86_64
+- AIX: ppc64le
+
+On Raspberry Pi Zero:
+
+Build the bundle (~1h):
+```bash
+./scripts/generate-dev-bundle.sh
+```
+
+Install and update meteor (~few hours):
+```bash
+meteor create testproject
+```
+
+Start your project (you may need to start mongodb from dev_bundle manually first):
+```bash
+MONGO_URL="mongodb://localhost:27017/meteor" meteor
+```
