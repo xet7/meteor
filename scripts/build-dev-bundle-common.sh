@@ -12,7 +12,7 @@ NPM_VERSION=6.14.15
 
 
 if [ "$UNAME" == "Linux" ] ; then
-    if [ "$ARCH" != "i686" -a "$ARCH" != "x86_64" -a "$ARCH" != "armv6l" -a "$ARCH" != "armv7l" -a "$ARCH" != "aarch64" -a "$ARCH" != "s390x" -a "$ARCH" != "ppc" -a "$ARCH" != "ppc64le"] ; then
+    if [ "$ARCH" != "i686" && "$ARCH" != "x86_64" && "$ARCH" != "armv6l" && "$ARCH" != "armv7l" && "$ARCH" != "aarch64" && "$ARCH" != "s390x" && "$ARCH" != "ppc" && "$ARCH" != "ppc64le"] ; then
         echo "Unsupported architecture: $ARCH"
         echo "Meteor only supports i686, x86_64, armv6l, armv7l, arm64, s390x, ppc and ppc64le for now."
         exit 1
