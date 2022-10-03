@@ -119,11 +119,13 @@ React.
 
 `--apollo`
 
-Create a basic [Apollo + Reac](https://www.apollographql.com/) app.
+Create a basic [Apollo + React](https://www.apollographql.com/) app.
 
 **Flags for default UI libraries / frameworks**
 
 `--blaze`
+
+Create a basic [Blaze](https://blazejs.org/) app.
 
 `--vue`
 
@@ -134,40 +136,45 @@ for more information.
 
 Create a basic [Svelte](https://svelte.dev/) app.
 
+`--tailwind`
+
+Create a basic [React](https://reactjs.org) + [Tailwind CSS](https://tailwindcss.com) app.
+
 **Packages**
 
-|   | Default (`--react`) | `--bare`  | `--full`  | `--minimal` | `--blaze`| `--apollo` | `--vue` | `--svelte` |
-|---|:-------------------:|:---------:|:---------:|:-----------:|:--------:|:----------:|:-------:|:----------:|
-|[autopublish](https://atmospherejs.com/meteor/autopublish)|X| | | |X| | |X|
-|[akryum:vue-component](https://atmospherejs.com/akryum/vue-component)| | | | | | |X| |
-|[apollo](https://atmospherejs.com/meteor/apollo)| | | | | |X| | |
-|[blaze-html-templates](https://atmospherejs.com/meteor/blaze-html-templates)| | |X| |X| | | |
-|[ecmascript](https://atmospherejs.com/meteor/ecmascript)|X|X|X|X|X|X|X|X|
-|[es5-shim](https://atmospherejs.com/meteor/es5-shim)|X|X|X|X|X|X|X|X|
-|[hot-module-replacement](https://atmospherejs.com/meteor/hot-module-replacement)|X| | | |X|X| | |
-|[insecure](https://atmospherejs.com/meteor/insecure)|X| | | |X| | |X|
-|[johanbrook:publication-collector](https://atmospherejs.com/meteor/johanbrook/publication-collector)| | |X| | |X| |
-|[jquery](https://atmospherejs.com/meteor/jquery)| | |X| |X| | |
-|[ostrio:flow-router-extra](https://atmospherejs.com/meteor/ostrio/flow-router-extra)| | |X|| | | | |
-|[less](https://atmospherejs.com/meteor/less)| | |X| | | | | |
-|[meteor](https://atmospherejs.com/meteor/meteor)| | | |X| | | | |
-|[meteor-base](https://atmospherejs.com/meteor/meteor-base)|X|X|X| |X|X|X|X|
-|[mobile-experience](https://atmospherejs.com/meteor/mobile-experience)|X|X|X| |X|X|X|X|
-|[mongo](https://atmospherejs.com/meteor/mongo)|X|X|X| |X|X|X|X|
-|[meteortesting:mocha](https://atmospherejs.com/meteortesting/mocha)| | |X| | | |X|
-|[reactive-var](https://atmospherejs.com/meteor/reactive-var)|X|X|X| |X|X|X|X|
-|[rdb:svelte-meteor-data](https://atmospherejs.com/rdb/svelte-meteor-data)| | | | | | | |X|
-|[server-render](https://atmospherejs.com/meteor/server-render)| | | |X| |X|X| |
-|[shell-server](https://atmospherejs.com/meteor/shell-server)| |X| |X|X|X|X|X
-|[standard-minifier-css](https://atmospherejs.com/meteor/standard-minifier-css)|X|X|X|X|X|X|X|X|
-|[standard-minifier-js](https://atmospherejs.com/meteor/standard-minifier-js)|X|X|X|X|X|X|X|X|
-|[static-html](https://atmospherejs.com/meteor/static-html)| |X| |X| |X|X|X|
-|[svelte:compiler](https://atmospherejs.com/svelte/compiler)| | | | | | | |X|
-|[swydo:graphql](https://atmospherejs.com/swydo/graphql)| | | | | |X| | |
-|[tracker](https://atmospherejs.com/meteor/tracker)| |X|X| |X| |X| |
-|[typescript](https://atmospherejs.com/meteor/typescript)|X|X|X|X|X|X|X|X|
-|[webapp](https://atmospherejs.com/meteor/webapp)| | | |X| | | | |
-|[react-meteor-data](https://atmospherejs.com/meteor/react-meteor-data)|X| | | | | | | |
+|                                                                                                      | Default (`--react`) | `--bare`  | `--full`  | `--minimal` | `--blaze`| `--apollo` | `--vue` | `--svelte` | `--tailwind` |
+|------------------------------------------------------------------------------------------------------|:-------------------:|:---------:|:---------:|:-----------:|:--------:|:----------:|:-------:|:----------:|:------------:|
+| [autopublish](https://atmospherejs.com/meteor/autopublish)                                           |X| | | |X| | |X|X|
+| [akryum:vue-component](https://atmospherejs.com/akryum/vue-component)                                | | | | | | |X| | |
+| [apollo](https://atmospherejs.com/meteor/apollo)                                                     | | | | | |X| | | |
+| [blaze-html-templates](https://atmospherejs.com/meteor/blaze-html-templates)                         | | |X| |X| | | | |
+| [ecmascript](https://atmospherejs.com/meteor/ecmascript)                                             |X|X|X|X|X|X|X|X|X|
+| [es5-shim](https://atmospherejs.com/meteor/es5-shim)                                                 |X|X|X|X|X|X|X|X|X|
+| [hot-module-replacement](https://atmospherejs.com/meteor/hot-module-replacement)                     |X| | | |X|X| | |X|
+| [insecure](https://atmospherejs.com/meteor/insecure)                                                 |X| | | |X| | |X|X|
+| [johanbrook:publication-collector](https://atmospherejs.com/meteor/johanbrook/publication-collector) | | |X| | |X| | |
+| [jquery](https://atmospherejs.com/meteor/jquery)                                                     | | |X| |X| | | |
+| [ostrio:flow-router-extra](https://atmospherejs.com/meteor/ostrio/flow-router-extra)                 | | |X|| | | | | |
+| [less](https://atmospherejs.com/meteor/less)                                                         | | |X| | | | | | |
+| [meteor](https://atmospherejs.com/meteor/meteor)                                                     | | | |X| | | | | |
+| [meteor-base](https://atmospherejs.com/meteor/meteor-base)                                           |X|X|X| |X|X|X|X|X|
+| [mobile-experience](https://atmospherejs.com/meteor/mobile-experience)                               |X|X|X| |X|X|X|X|X|
+| [mongo](https://atmospherejs.com/meteor/mongo)                                                       |X|X|X| |X|X|X|X|X|
+| [meteortesting:mocha](https://atmospherejs.com/meteortesting/mocha)                                  | | |X| | | |X| |
+| [reactive-var](https://atmospherejs.com/meteor/reactive-var)                                         |X|X|X| |X|X|X|X|X|
+| [rdb:svelte-meteor-data](https://atmospherejs.com/rdb/svelte-meteor-data)                            | | | | | | | |X| |
+| [server-render](https://atmospherejs.com/meteor/server-render)                                       | | | |X| |X|X| | |
+| [shell-server](https://atmospherejs.com/meteor/shell-server)                                         | |X| |X|X|X|X|X |
+| [standard-minifier-css](https://atmospherejs.com/meteor/standard-minifier-css)                       |X|X|X|X|X|X|X|X|X|
+| [standard-minifier-js](https://atmospherejs.com/meteor/standard-minifier-js)                         |X|X|X|X|X|X|X|X|X|
+| [static-html](https://atmospherejs.com/meteor/static-html)                                           | |X| |X| |X|X|X| |
+| [svelte:compiler](https://atmospherejs.com/svelte/compiler)                                          | | | | | | | |X| |
+| [swydo:graphql](https://atmospherejs.com/swydo/graphql)                                              | | | | | |X| | | |
+| [tailwindcss](https://tailwindcss.com)                                                               | |X|X| |X| |X| |X|
+| [tracker](https://atmospherejs.com/meteor/tracker)                                                   | |X|X| |X| |X| | |
+| [typescript](https://atmospherejs.com/meteor/typescript)                                             |X|X|X|X|X|X|X|X|X|
+| [webapp](https://atmospherejs.com/meteor/webapp)                                                     | | | |X| | | | | |
+| [react-meteor-data](https://atmospherejs.com/meteor/react-meteor-data)                               |X| | | | | | | |X|
 
 <h2 id="meteorloginlogout">meteor login / logout</h2>
 
@@ -240,7 +247,21 @@ This is necessary as our database provider does not have certificates installed 
 You can change the app plan by providing argument `--plan` with one of the following values: professional, essentials, or free. Be aware that this argument overwrites the `--free` argument.
 
 {% pullquote warning %}
-The `plan` option is available to Meteor 2.1+
+The `plan` option is available since Meteor 2.1.
+{% endpullquote %}
+
+Use `--cache-build` to keep the bundle in your temp folder after the deploy is finished, this is helpful when you want to deploy the same code to different environments. For example, a [background job](https://cloud-guide.meteor.com/background-jobs.html) app from the same code as the web app.
+
+Your project should be a git repository as the commit hash is going to be used to decide if your code is still the same or not in the next deploy.
+
+{% pullquote warning %}
+The `cache-build` option is available since Meteor 1.11.
+{% endpullquote %}
+
+With the argument `--container-size` you can change your app's container size using the deploy command. The valid arguments are: `tiny`, `compact`, `standard`, `double`, `quad`, `octa`, and `dozen`. To see more about the difference and prices of each one you can check it [here](https://www.meteor.com/cloud#pricing-section).
+
+{% pullquote warning %}
+The `--container-size` option is available since Meteor 2.4.1.
 {% endpullquote %}
 
 <h2 id="meteorupdate">meteor update</h2>

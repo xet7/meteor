@@ -43,28 +43,39 @@ Reviwers are members of the community that help with Pull Requests reviews.
 
 Current Reviewers:
 - [meteor](https://github.com/meteor/meteor)
-  - [@filipenevola](https://github.com/filipenevola)
-  - [@renanccastro](https://github.com/renanccastro)
-  - [@StorytellerCZ](https://github.com/StorytellerCZ)
-  - [@zodern](https://github.com/zodern)
-  - [@lorensr](https://github.com/lorensr)
+  - [@denihs](https://github.com/denihs)
+  - [@fredmaiaarantes](https://github.com/fredmaiaarantes)
+  - [@henriquealbert](https://github.com/henriquealbert)
+  - [@aquinoit](https://github.com/aquinoit)
+  - [@Grubba27](https://github.com/Grubba27)
+- [@filipenevola](https://github.com/filipenevola)
+- [@StorytellerCZ](https://github.com/StorytellerCZ)
+- [@zodern](https://github.com/zodern)
+- [@CaptainN](https://github.com/CaptainN)
+- [@radekmie](https://github.com/radekmie)
 
 #### Core Committer
 
-The contributors with commit access to meteor/meteor are employees of Meteor Software Ltd or community members who have distinguished themselves in other contribution areas. If you want to become a core committer please start writing PRs.
+The contributors with commit access to meteor/meteor are employees of Meteor Software LP or community members who have distinguished themselves in other contribution areas or members of partner companies. If you want to become a core committer please start writing PRs.
 
 Current Core Committers:
-- [@filipenevola](https://github.com/filipenevola)
-- [@renanccastro](https://github.com/renanccastro)
 - [@denihs](https://github.com/denihs)
-
-#### Developer Evangelist
-
-- [@filipenevola](https://github.com/filipenevola) (Feel free to reach him out on [Twitter](https://twitter.com/FilipeNevola))
+- [@zodern](https://github.com/zodern)
+- [@filipenevola](https://github.com/filipenevola)
+- [@fredmaiaarantes](https://github.com/fredmaiaarantes)
+- [@henriquealbert](https://github.com/henriquealbert)
+- [@Grubba27](https://github.com/Grubba27)
+- [@StorytellerCZ](https://github.com/StorytellerCZ)
+- [@CaptainN](https://github.com/CaptainN)
+- [@radekmie](https://github.com/radekmie)
+- [@piotrpospiech](https://github.com/piotrpospiech)
+- [@edimarlnx](https://github.com/edimarlnx)
+- [@matheusccastroo](https://github.com/matheusccastroo)
+- [@eduwr](https://github.com/eduwr)
 
 ### Tracking project work
 
-Right now, the best place to track the work being done on Meteor is to take a look at the latest release milestone [here](https://github.com/meteor/meteor/milestones).  Also, the [Meteor Roadmap](Roadmap.md) contains high-level information on the current priorities of the project.
+Right now, the best place to track the work being done on Meteor is to take a look at the latest release milestone [here](https://github.com/meteor/meteor/milestones).  Also, the [Meteor Roadmap](https://docs.meteor.com/roadmap.html) contains high-level information on the current priorities of the project.
 
 ## Reporting a bug in Meteor
 <a name="reporting-bug"></a>
@@ -126,7 +137,7 @@ for more details on proposing changes to core code.
 Feature requests are tracked in the [Discussions](https://github.com/meteor/meteor/discussions).
 
 Meteor is a big project with [many sub-projects](https://github.com/meteor/meteor/tree/devel/packages).
-Community is welcome to help in all the sub-projects. We use our [roadmap](Roadmap.md) to communicate the high-level features we're currently prioritizing.
+Community is welcome to help in all the sub-projects. We use our [roadmap](https://docs.meteor.com/roadmap.html) to communicate the high-level features we're currently prioritizing.
 
 Every additional feature adds a maintenance cost in addition to its value. This
 cost starts with the work of writing the feature or reviewing a community pull
@@ -199,7 +210,7 @@ For more information about how to work with Meteor core, take a look at the [Dev
 
 ### Proposing your change
 
-You'll have the best chance of getting a change into core if you can build consensus in the community for it or if it is listed in the [roadmap](https://github.com/meteor/meteor/blob/devel/Roadmap.md). Start by creating a well specified Discussion [here](https://github.com/meteor/meteor/discussions).
+You'll have the best chance of getting a change into core if you can build consensus in the community for it or if it is listed in the [roadmap](https://docs.meteor.com/roadmap.html). Start by creating a well specified Discussion [here](https://github.com/meteor/meteor/discussions).
 
 Help drive discussion and advocate for your feature on the Github ticket (and perhaps the forums). The higher the demand for the feature and the greater the clarity of it's specification will determine the likelihood of a core contributor prioritizing your feature by flagging it with the `ready` label.
 

@@ -5,13 +5,14 @@ set -u
 
 UNAME=$(uname)
 ARCH=$(uname -m)
-NODE_VERSION=14.18.1
-MONGO_VERSION_64BIT=4.4.4
+NODE_VERSION=14.19.3
+MONGO_VERSION_64BIT=5.0.5
 MONGO_VERSION_32BIT=3.2.22
-NPM_VERSION=6.14.15
+NPM_VERSION=6.14.17
 
 
 if [ "$UNAME" == "Linux" ] ; then
+    NODE_BUILD_NUMBER=
     if [ "$ARCH" != "i686" && "$ARCH" != "x86_64" && "$ARCH" != "armv6l" && "$ARCH" != "armv7l" && "$ARCH" != "aarch64" && "$ARCH" != "s390x" && "$ARCH" != "ppc" && "$ARCH" != "ppc64le"] ; then
         echo "Unsupported architecture: $ARCH"
         echo "Meteor only supports i686, x86_64, armv6l, armv7l, arm64, s390x, ppc and ppc64le for now."
@@ -25,6 +26,7 @@ if [ "$UNAME" == "Linux" ] ; then
     }
 elif [ "$UNAME" == "Darwin" ] ; then
     if [ "$ARCH" != "arm64" ] ; then
+      NODE_BUILD_NUMBER=
       SYSCTL_64BIT=$(sysctl -n hw.cpu64bit_capable 2>/dev/null || echo 0)
       if [ "$ARCH" == "i386" -a "1" != "$SYSCTL_64BIT" ] ; then
           # some older macos returns i386 but can run 64 bit binaries.
