@@ -1,4 +1,199 @@
-## 2.7.3, 2022-05-31
+## 2.8.1, 2022-11-14
+
+#### Highlights
+
+- modernize tools/run-updater.js by [afrokick](https://github.com/afrokick)
+- feat(error message): Especifing error message when cross-boundary by [Grubba27](https://github.com/Grubba27)
+- Type definitions for core packages by [piotrpospiech](https://github.com/piotrpospiech)
+- Add https proxy support to meteor-installer by [heschong](https://github.com/heschong)
+- Fix case insensitive lookup resource overuse by [ToyboxZach](https://github.com/ToyboxZach)
+- Update default Facebook API to v15 and fix local changelog by [StorytellerCZ](https://github.com/StorytellerCZ)
+- Bump to Node v14.21.1 by [StorytellerCZ](https://github.com/StorytellerCZ)
+- Use true mongo binary types by [znewsham](https://github.com/znewsham)
+- Add docs for Accounts.registerLoginHandler by [shivam1646](https://github.com/shivam1646)
+- Updated MongoDB driver to 4.11 by [radekmie](https://github.com/radekmie)
+- Show port in restart message by [harryadel](https://github.com/harryadel)
+- In the client, don't wait if the stub doesn't return a promise by [denihs](https://github.com/denihs)
+- The rest of type definitions for core packages by [piotrpospiech](https://github.com/piotrpospiech)
+- Removing underscore in packages by [harryadel](https://github.com/harryadel):
+  - [twitter-oauth] Remove underscore 
+  - [test-in-browser] Remove underscore 
+  - [webapp-hashing] Remove underscore 
+  - [browser-policy] Remove underscore 
+  - [ecmascript] Remove underscore 
+  - [browser-policy-framing] Remove underscore 
+  - [diff-sequence] Remove underscore 
+  - [facts-ui] Remove underscore
+  - [geojson-utils] Remove underscore 
+
+#### Breaking Changes
+
+N/A
+
+#### Migration Steps
+
+_In case you want types in your app using the core packages types/zodern:types (now you do have the option)_
+
+1. Remove `@types/meteor` package
+2. Install [`zodern:types`](https://github.com/zodern/meteor-types) package
+3. Follow [installation guide for the Meteor Apps](https://github.com/zodern/meteor-types#meteor-apps) to update
+
+#### Meteor Version Release
+
+* `accounts-base@2.2.5`
+  - added types for package.
+* `browser-policy@1.1.1`
+  - adjusted package tests.
+* `browser-policy-common@1.0.12`
+  - added types for package.
+* `browser-policy-framing@1.1.1`
+  - removed underscore.
+* `check@1.3.2`
+  - added types for package.
+* `ddp@1.4.0`
+  - added types for package.
+* `ddp-client@2.6.1`
+  - In the client, don't wait if the stub doesn't return a promise.
+* `ddp-rate-limiter@1.1.1`
+  - added types for package.
+* `diff-sequence@1.1.2`
+  - removed underscore.
+* `ecmascript@0.16.3`
+  - removed underscore.
+* `ejson@1.1.3`
+  - added types for package. 
+* `ejson@2.2.2`
+  - added types for package.
+* `facebook-oauth@1.12.0`
+  - Updated default version of Facebook GraphAPI to v15
+* `facts-ui@1.0.1`
+  - removed underscore.
+* `fetch@0.1.2`
+  - added types for package.
+* `geojson-utils@1.0.11`
+  - removed underscore.
+* `hot-module-replacement@0.5.2`
+  - added types for package.
+* `meteor@1.10.2`
+  - added types for package.
+* `modern-browsers@0.1.9`
+  - added types for package.
+* `modules-runtime@0.13.2`
+  - added accurate error messages.
+* `modules-runtime-hot@0.14.1`
+  - added accurate error messages.
+* `mongo@1.16.1`
+  - added types for package.
+  - added true mongo binary
+* `npm-mongo@4.11.0`
+  - updated npm mongo version to match npm one.
+* `promise@0.13.0`
+  - added types for package.
+* `random@1.2.1`
+  - added types for package.
+* `reactive-dict@1.3.1`
+  - added types for package.
+* `reactive-dict@1.0.12`
+  - added types for package.
+* `server-render@0.4.1`
+  - added types for package.
+* `service-configuration@1.3.1`
+  - added types for package.
+* `session@1.2.1`
+  - added types for package.
+* `test-in-browser@1.3.1`
+  - removed underscore.
+* `tracker@1.2.1`
+  - added types for package.
+* `twitter-oauth@1.3.1`
+  - removed underscore.
+* `underscore@1.0.11`
+  - added types for package.
+* `webapp@1.13.2`
+  - added types for package.
+* `webapp-hashing@1.1.1`
+  - added types for package.
+
+## v2.8, 2022-10-19
+
+#### Highlights
+* New MongoDB Package Async API. [PR](https://github.com/meteor/meteor/pull/12028)
+* Node update to [v14.20.1](https://nodejs.org/en/blog/release/v14.20.1/) as part of the [September 22nd security release](https://nodejs.org/en/blog/vulnerability/september-2022-security-releases/)
+* Update MongoDB driver to 4.9. [PR](https://github.com/meteor/meteor/pull/12097)
+* Meteor.callAsync method. [PR](https://github.com/meteor/meteor/pull/12196)
+* Added new Chakra-ui Skeleton. [PR](https://github.com/meteor/meteor/pull/12181)
+* Added new Solid Skeleton. [PR](https://github.com/meteor/meteor/pull/12186)
+
+#### Breaking Changes
+N/A
+
+#### Migration Steps
+Read our [Migration Guide](https://guide.meteor.com/2.8-migration.html) for this version.
+
+#### Meteor Version Release
+* `modules@0.19.0`:
+  - Updating reify version. [PR](https://github.com/meteor/meteor/pull/12055).
+* `minimongo@1.9.0`:
+  - New methods to work with the Async API. [PR](https://github.com/meteor/meteor/pull/12028).
+  - Solved invalid dates in Minimongo Matcher [PR](https://github.com/meteor/meteor/pull/12165).
+* `mongo@1.16.0`:
+  - Adding async counterparts that allows gradual migration from Fibers. [PR](https://github.com/meteor/meteor/pull/12028).
+  - Improved oplogV2V1Converter implementation. [PR](https://github.com/meteor/meteor/pull/12116).
+  - Exit on MongoDB connection error. [PR](https://github.com/meteor/meteor/pull/12115).
+  - Fixed MongoConnection._onFailover hook. [PR](https://github.com/meteor/meteor/pull/12125).
+  - Fixed handling objects in oplogV2V1Converter. [PR](https://github.com/meteor/meteor/pull/12107).
+* `meteor@1.10.1`:
+  - Create method to check if Fibers is enabled by flag DISABLE_FIBERS. [PR](https://github.com/meteor/meteor/pull/12100).
+  - Fix bugs for linter build plugins. [PR](https://github.com/meteor/meteor/pull/12120).
+  - Document meteor show METEOR. [PR](https://github.com/meteor/meteor/pull/12124).
+  - Update Cordova Android to 10.1.2. [PR](https://github.com/meteor/meteor/pull/12131).
+  - Fixed flaky test. [PR](https://github.com/meteor/meteor/pull/12129).
+  - Refactoring/Remove unused imports from tools folder. [PR](https://github.com/meteor/meteor/pull/12084).
+  - Fix problem when publishing async methods. [PR](https://github.com/meteor/meteor/pull/12152).
+  - Update skeletons Apollo[PR](https://github.com/meteor/meteor/pull/12091) and other skeletons [PR](https://github.com/meteor/meteor/pull/12099)
+  - Added callAsync method for calling async methods [PR](https://github.com/meteor/meteor/pull/12196).
+* `meteor-installer@2.7.5`:
+  - Validates required Node.js version. [PR](https://github.com/meteor/meteor/pull/12066).
+* `npm-mongo@4.9.0`:
+  - Updated MongoDB driver to 4.9. [PR](https://github.com/meteor/meteor/pull/12163).
+
+
+#### Independent Releases
+* `accounts-passwordless@2.1.3`:
+  - Fixing bug where tokens where never expiring. [PR](https://github.com/meteor/meteor/pull/12088).
+* `accounts-base@2.2.4`:
+  - Adding new options to the `Accounts.config()` method: `loginTokenExpirationHours` and `tokenSequenceLength`. [PR](https://github.com/meteor/meteor/pull/12088).
+* `Meteor Repo`:
+  - Included githubactions in the dependabot config. [PR](https://github.com/meteor/meteor/pull/12061).
+  - Visual rework in meteor readme. [PR](https://github.com/meteor/meteor/pull/12133).
+  - Remove useraccounts from Guide. [PR](https://github.com/meteor/meteor/pull/12090).
+* `minifier-css@1.6.1`:
+  - Update postcss package to avoid issues with `Browserslist` and `caniuse-lite`. [PR](https://github.com/meteor/meteor/pull/12136).
+* `minifier-js@2.7.5`:
+  - Update terser package due to security fixes and to take advantage of terser improvements. [PR](https://github.com/meteor/meteor/pull/12137).
+* `standard-minifier-css@1.8.2`:
+  - Update dependencies to avoid issues with `Browserslist` and `caniuse-lite`. [PR](https://github.com/meteor/meteor/pull/12141).
+* `standard-minifier-js@2.8.1`:
+  - Update dependencies to avoid issues with `Browserslist` and `caniuse-lite`. [PR](https://github.com/meteor/meteor/pull/12142).
+* `ddp-server@2.5.1`:
+  - Rename setPublicationStrategy and getPublicationStrategy arguments. [PR](https://github.com/meteor/meteor/pull/12166).
+
+#### Special thanks to
+- [@fredmaiaarantes](https://github.com/fredmaiaarantes)
+- [@radekmie](https://github.com/radekmie)
+- [@naveensrinivasan](https://github.com/naveensrinivasan)
+- [@zodern](https://github.com/zodern)
+- [@brucejo75](https://github.com/brucejo75)
+- [@matheusccastroo](https://github.com/matheusccastroo)
+- [@victoriaquasar](https://github.com/victoriaquasar)
+- [@StorytellerCZ](https://github.com/StorytellerCZ)
+- [@Grubba27](https://github.com/Grubba27)
+- [@denihs](https://github.com/denihs)
+- [@edimarlnx](https://github.com/edimarlnx)
+
+For making this great framework even better!
+
+## v2.7.3, 2022-05-3
 
 #### Highlights
 * `accounts-passwordless@2.1.2`:
@@ -22,7 +217,7 @@ N/A
 * Fix win style paths being added to watch sets.
 * Fix recompiling npm packages for web arch. [PR](https://github.com/meteor/meteor/pull/12023).
 
-## 2.7.2, 2022-05-10
+## v2.7.2, 2022-05-10
 
 #### Highlights
 
@@ -276,6 +471,21 @@ Read our [Migration Guide](https://guide.meteor.com/2.6-migration.html) for this
     - Custom message support for `throws`
 
 #### Independent Releases
+
+## v2.5.8, 2022-05-31
+
+#### Highlights
+
+* Fixed 2.5.7 MongoDB error
+* Patch release to update Node to version 14.19.3 and npm version to 6.14.17.
+
+#### Breaking Changes
+
+- N/A
+
+#### Migration Steps
+
+- N/A
 
 ## v2.5.7, 2022-05-31
 
@@ -576,7 +786,7 @@ This version should be ignored. Proceed to 2.5.5 above.
 * Typescript updated to [v4.3.5](https://github.com/Microsoft/TypeScript/releases/tag/v4.3.5)
 * Email package now allows setting `Email.customTransport` to override sending method.
 * Use `createIndex` instead of `_ensureIndex` to align with new MongoDB naming.
-* Apollo skeleton has been upgraded for [Apollo server v3](https://github.com/apollographql/apollo-server/blob/main/CHANGELOG.md#v300)
+* Apollo skeleton has been upgraded for [Apollo server v3](https://github.com/apollographql/apollo-server/blob/main/CHANGELOG_historical.md#v300)
 * `reify` has been updated to v0.22.2 which reduces the overhead of `import` statements and some uses of `export ... from`, especially when a module is imported a large number of times or re-exports a large number of exports from other modules. PRs [1](https://github.com/benjamn/reify/pull/246), [2](https://github.com/benjamn/reify/pull/291)
 * Meteor NPM installer is [now available for all platforms](https://github.com/meteor/meteor/pull/11590).
 * DDP server now allows you to set publication strategies for your publications to control mergebox behavior
@@ -946,7 +1156,7 @@ This version should be ignored. Proceed to 2.5.5 above.
     - The undocumented environment variable `DDP_DEFAULT_CONNECTION_URL` behavior has changed. Setting `DDP_DEFAULT_CONNECTION_URL` when running the server (development: `meteor run` or production: `node main.js`) sets the default DDP server value for meteor.  But this did not work for `cordova` apps.  Now you can define the `cordova` app default DDP server value by setting `DDP_DEFAULT_CONNECTION_URL` when building (`meteor build`).
     - Skeletons dependencies updated to latest version
     - Svelte skeleton now has HMR
-    - New deploy option: `--build-only`. Helpful if you want to build first and after some validations proceeding with the upload and deploy. [Read more](https://cloud-guide.meteor.com/deploy-guide.html#cache-only)
+    - New deploy option: `--build-only`. Helpful if you want to build first and after some validations proceeding with the upload and deploy. [Read more](https://galaxy-guide.meteor.com/deploy-command-line.html#cache-only)
     - Improved watched system to properly rebuild `client` even when a file is outside of `client` or `imports` folders. See [PR](https://github.com/meteor/meteor/pull/11474) for details.
     - Fix an issue when `App.appendToConfig` crashed Cordova build.
     - Reify compiler now uses cache in runtime. [Read more](https://github.com/meteor/meteor/pull/11400)
@@ -1434,7 +1644,7 @@ N/A
 
 * `meteor create --vue` is now available thanks to [@chris-visser](https://github.com/chris-visser). PR [#11086](https://github.com/meteor/meteor/pull/11086)
 
-* `--cache-build` option is now available on `meteor deploy` command and you can use it safely all the time if you are using a Git repository to run your deploy. This is helpful if your upload is failing then you can retry just the upload and also if you deploy the same bundle to multiple environments. [Read more](https://cloud-guide.meteor.com/deploy-guide.html#cache-build).
+* `--cache-build` option is now available on `meteor deploy` command and you can use it safely all the time if you are using a Git repository to run your deploy. This is helpful if your upload is failing then you can retry just the upload and also if you deploy the same bundle to multiple environments. [Read more](https://galaxy-guide.meteor.com/deploy-command-line.html#cache-build)
 
 * Multiple optimizations in build performance, many of them for Windows thanks to [@zodern](https://github.com/zodern). PRs [#10838](https://github.com/meteor/meteor/pull/10838), [#11114](https://github.com/meteor/meteor/pull/11114), [#11115](https://github.com/meteor/meteor/pull/11115), [#11102](https://github.com/meteor/meteor/pull/11102), [#10839](https://github.com/meteor/meteor/pull/10839)
 
@@ -3816,9 +4026,9 @@ N/A
 
 > Note: With this version of Reify, `import` declarations are compiled to
 `module.watch(require(id), ...)` instead of `module.importSync(id, ...)`
-or the older `module.import(id, ...)`. The behavior of the compiled code
-should be the same as before, but the details seemed different enough to
-warrant a note.
+> or the older `module.import(id, ...)`. The behavior of the compiled code
+> should be the same as before, but the details seemed different enough to
+> warrant a note.
 
 * The `install` npm package has been upgraded to version 0.10.1.
 
@@ -4162,15 +4372,15 @@ https://github.com/meteor/meteor/commit/0cbd25111d1249a61ca7adce23fad5215408c821
   are once again constrained by the current Meteor release.
 
 > Before Meteor 1.4, the current release dictated the exact version of
-every installed core package, which meant newer core packages could not
-be installed without publishing a new Meteor release. In order to
-support incremental development of core packages, Meteor 1.4 removed all
-release-based constraints on core package versions
+> every installed core package, which meant newer core packages could not
+> be installed without publishing a new Meteor release. In order to
+> support incremental development of core packages, Meteor 1.4 removed all
+> release-based constraints on core package versions
 ([#7084](https://github.com/meteor/meteor/pull/7084)). Now, in Meteor
-1.4.3, core package versions must remain patch-compatible with the
-versions they had when the Meteor release was published. This middle
-ground restores meaning to Meteor releases, yet still permits patch
-updates to core packages.
+> 1.4.3, core package versions must remain patch-compatible with the
+> versions they had when the Meteor release was published. This middle
+> ground restores meaning to Meteor releases, yet still permits patch
+> updates to core packages.
 
 * The `cordova-lib` npm package has been updated to 6.4.0, along with
   cordova-android (6.1.1) and cordova-ios (4.3.0), and various plugins.
@@ -4260,11 +4470,11 @@ updates to core packages.
   change was deemed too significant for this release.
 
 > Note: The decision to revert the above change was made late in the
-Meteor 1.4.2.4 release process, before it was ever recommended but too
-late in the process to avoid the additional increment of the version number.
-See [#8311](https://github.com/meteor/meteor/pull/8311) for additional
-information. This change will still be released in an upcoming version
-of Meteor with a more seamless upgrade.
+> Meteor 1.4.2.4 release process, before it was ever recommended but too
+> late in the process to avoid the additional increment of the version number.
+> See [#8311](https://github.com/meteor/meteor/pull/8311) for additional
+> information. This change will still be released in an upcoming version
+> of Meteor with a more seamless upgrade.
 
 ## v1.4.2.4, 2017-02-02
 
@@ -4273,7 +4483,7 @@ of Meteor with a more seamless upgrade.
 * The `npm` npm package has been upgraded from version 3.10.9 to 4.1.2.
 
 > Note: This change was later deemed too substantial for a point release
-and was reverted in Meteor 1.4.2.7.
+> and was reverted in Meteor 1.4.2.7.
 
 * Fix for [Issue #8136](https://github.com/meteor/meteor/issues/8136).
 
@@ -4300,9 +4510,9 @@ and was reverted in Meteor 1.4.2.7.
 
 > Note: Meteor 1.4.2.2 was finalized before
 [#8045](https://github.com/meteor/meteor/pull/8045) was merged, but
-those changes were [deemed important
+> those changes were [deemed important
 enough](https://github.com/meteor/meteor/pull/8044#issuecomment-260913739)
-to skip recommending 1.4.2.2 and instead immediately release 1.4.2.3.
+> to skip recommending 1.4.2.2 and instead immediately release 1.4.2.3.
 
 ## v1.4.2.2, 2016-11-15
 
@@ -4389,10 +4599,10 @@ to skip recommending 1.4.2.2 and instead immediately release 1.4.2.3.
   See https://github.com/meteor/meteor/pull/7668 for more details.
 
 > Note: the `METEOR_PROFILE` environment variable now provides data for
-server startup time as well as build time, which should make it easier
-to tell which of your packages are responsible for slow startup times.
-Please include the output of `METEOR_PROFILE=10 meteor run` with any
-GitHub issue about rebuild performance.
+> server startup time as well as build time, which should make it easier
+> to tell which of your packages are responsible for slow startup times.
+> Please include the output of `METEOR_PROFILE=10 meteor run` with any
+> GitHub issue about rebuild performance.
 
 * `npm` has been upgraded to version 3.10.9.
 
@@ -4969,8 +5179,8 @@ GitHub issue about rebuild performance.
 ## v1.3.2.4, 2016-04-20
 
 > Meteor 1.3.2.4 was published because publishing 1.3.2.3 failed in an
-unrecoverable way. Meteor 1.3.2.4 contains no additional changes beyond
-the changes in 1.3.2.3.
+> unrecoverable way. Meteor 1.3.2.4 contains no additional changes beyond
+> the changes in 1.3.2.3.
 
 ## v1.3.2.3, 2016-04-20
 
