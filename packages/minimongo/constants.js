@@ -9,6 +9,7 @@ export const ASYNC_COLLECTION_METHODS = [
   '_createCappedCollection',
   '_dropCollection',
   '_dropIndex',
+  '_ensureIndex',
   'createIndex',
   'findOne',
   'insert',

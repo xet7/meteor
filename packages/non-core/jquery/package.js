@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Manipulate the DOM using CSS selectors",
-  version: '3.0.0'
+  version: '2.2.4'
 });
 
 Package.onUse(function (api) {

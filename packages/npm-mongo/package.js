@@ -8,7 +8,7 @@ Package.describe({
 });
 
 Npm.depends({
-  mongodb: "4.11.0"
+  mongodb: "3.7.3"
 });
 
 Package.onUse(function (api) {

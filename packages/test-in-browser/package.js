@@ -22,7 +22,7 @@ Package.onUse(function (api) {
     'blaze@2.3.4',
     'templating@1.3.2',
     'spacebars@1.0.15',
-    'jquery@3.0.0',
+    'jquery',
     'ddp',
     'tracker',
   ], 'client');

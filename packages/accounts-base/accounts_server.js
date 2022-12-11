@@ -1804,21 +1804,21 @@ const setupUsersCollection = users => {
   });
 
   /// DEFAULT INDEXES ON USERS
-  users.createIndex('username', { unique: true, sparse: true });
-  users.createIndex('emails.address', { unique: true, sparse: true });
-  users.createIndex('services.resume.loginTokens.hashedToken',
+  users._ensureIndex('username', { unique: true, sparse: true });
+  users._ensureIndex('emails.address', { unique: true, sparse: true });
+  users._ensureIndex('services.resume.loginTokens.hashedToken',
     { unique: true, sparse: true });
-  users.createIndex('services.resume.loginTokens.token',
+  users._ensureIndex('services.resume.loginTokens.token',
     { unique: true, sparse: true });
   // For taking care of logoutOtherClients calls that crashed before the
   // tokens were deleted.
-  users.createIndex('services.resume.haveLoginTokensToDelete',
+  users._ensureIndex('services.resume.haveLoginTokensToDelete',
     { sparse: true });
   // For expiring login tokens
-  users.createIndex("services.resume.loginTokens.when", { sparse: true });
+  users._ensureIndex("services.resume.loginTokens.when", { sparse: true });
   // For expiring password tokens
-  users.createIndex('services.password.reset.when', { sparse: true });
-  users.createIndex('services.password.enroll.when', { sparse: true });
+  users._ensureIndex('services.password.reset.when', { sparse: true });
+  users._ensureIndex('services.password.enroll.when', { sparse: true });
 };
 
 
